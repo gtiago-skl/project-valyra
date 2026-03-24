@@ -1,0 +1,19 @@
+What to do I wonder. Played some Terraria if only to see certain “movement nuances”. Did exactly that (Didn’t fall into the trap of playing too long). Installed Dead cells and Silksong. Decided to try them out a bit, too. To test the controls with mouse and keyboard to see what would work. Tested Deadcells first. As expected the dodge button is on shift.
+
+A problem I noticed right away while playing Dead cells is: If I want Terraria like gameplay, then the “Right Click Left Click” idea falls appart right away because interactables, with Terraria, are typically with left click and with the mouse. Maybe I could make it so that left click changes with hover? But that brings abouts its own set of issues. Either way the right click left click idea is the best way forward, so I’ll fix that as I go. Also I can’t see where the mouse cursor is. This is not my vision for the game either.
+
+Immediatly when I tried out silksong the FIRST thing that jumped out was its sound design. That sound design is ASTONISHING. Like, it IMMEDIATLY tries to suck me in. This is a level of immersion that might not be possible in a non narrative driven game. But it’s quite an incredible achievement, I’ll keep that in mind when designing sound.
+
+Silksong is INCREDIBLY tight and responsive. Dead cells feels a lot more…. how do I put it.
+
+Dead cells doesn’t feel… I don’t feel the weight behind the hits. In Silksong every single action you input feels decisive and important, and yet there’s room for flexible and agile movement, it’s quite incredible. Moving forward, silksong is going to be THE inspiration for the combat.
+
+However I do believe the camera in silksong plays a big role in the movement and decisiveness, especially in boss fights.
+
+I’m getting ideas. Maybe I could do a hybrid setup, one where, when a boss is summoned, an arena is created around, and the player cannot leave or destroy blocks. It’s do or die. (Like in silksong). This would definitively ruin some of that “Terraria” feel, but the difference is that the players could still prep their arena in advance. It’s still just an idea.
+But the boss fights in silksong as astonishing and memorable, this is definitively the kind of stuff I’d love to play over and over, and mastering the dodging and movement, and when to hit the boss.
+One thing I’ll add is that I didn’t get to test the “range” portion a lot yet. I’ll test that with Terraria really quick, only because ranged combat differs from simple melee input, that stuff should be responsive based on where the mouse is.
+
+Terraria fixes this by just moving the arms of the player up and down according to where the mouse is. It’s quite a clever solution. In order to have the sort of animation I desire, I’d need to do something to change that. A few more notes:
+
+I had the idea that maybe players are tired of “survival crafting”. So it should be complementary to the gameplay, not the main focus (in my idea). Terraria is an old game, people are used to the recipes. Most people don’t want to have to re-learn recipes from scratch just to progress (I mean, who would). So I considered the whole procedurally generated game survival idea would be actively working against me. I even wondered if people are even into that when it dawned on me that it’s still very much alive, people play these games, like in hytale, or in palworld, these crafting survival games have an audience. I shouldn’t worry about the audience, I was thinking “Is this fun”?. Like the procedurally generated terrain, part. Because in Terraria it’s very intuitive. Very, intuitive. Breaking blocks, even when it’s slow, it feels good. It’s weird that it does, it feels responsive, and fast, and isn’t a mess like in minecraft where you have to constantly swap tools (Terraria’s “auto-swap” idea for the shift key is incredible for this.)
