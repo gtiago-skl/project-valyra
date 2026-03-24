@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -270.0
-const MAX_FALLING_VELOCITY = 1000.0
+const MAX_FALLING_VELOCITY = 800.0
 
 #States would help for more advanced mechanics such as double jump, etc
 enum JumpState {READY, JUMPING, FALLING}
 var current_jump_state: JumpState = JumpState.READY
 var elapsed_jump_time: float = 0.0 #Can use a timer and timeout signal instead
-@export var jump_duration: float = 0.15
+var ready_to_jump : bool = current_jump_state == JumpState.READY and is_on_floor()
+@export var jump_duration: float = 0.25
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -24,7 +25,6 @@ func _handle_jumping_state(delta):
 	#Input
 	if Input.is_action_just_pressed("jump"):
 		print("Pressed 'jump'!")
-		var ready_to_jump : bool = current_jump_state == JumpState.READY and is_on_floor()
 		if ready_to_jump:
 			current_jump_state = JumpState.JUMPING
 			#anim.play("Jump") (if we have the anim for it)
