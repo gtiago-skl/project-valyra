@@ -22,12 +22,12 @@ func _handle_jumping_state(delta):
 			current_jump_state = JumpState.FALLING
 	
 	#Input
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_accept"):
 		print("Pressed 'jump'!")
 		if current_jump_state == JumpState.READY and is_on_floor():
 			current_jump_state == JumpState.JUMPING
 			#anim.play("Jump") (if we have the anim for it)
-		if Input.is_action_just_released("ui_up"):
+		if Input.is_action_just_released("ui_accept"):
 			print("Released 'jump'!")
 			if current_jump_state == JumpState.JUMPING:
 				current_jump_state = JumpState.FALLING
