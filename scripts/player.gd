@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -400.0
+const MAX_FALLING_VELOCITY = 800.0
 
 #States would help for more advanced mechanics such as double jump, etc
 enum JumpState {READY, JUMPING, FALLING}
@@ -21,11 +22,13 @@ func _handle_jumping_state(delta):
 			current_jump_state = JumpState.FALLING
 	
 	#Input
-	if Input.is_action_just_pressed("up"):
+	if Input.is_action_just_pressed("ui_up"):
+		print("Pressed 'jump'!")
 		if current_jump_state == JumpState.READY and is_on_floor():
 			current_jump_state == JumpState.JUMPING
 			#anim.play("Jump") (if we have the anim for it)
-		if Input.is_action_just_released("up"):
+		if Input.is_action_just_released("ui_up"):
+			print("Released 'jump'!")
 			if current_jump_state == JumpState.JUMPING:
 				current_jump_state = JumpState.FALLING
 	# Reset state
@@ -45,7 +48,7 @@ func _physics_process(delta: float) -> void:
 	#Then handle movement
 	match current_jump_state:
 		JumpState.READY, JumpState.FALLING:
-			velocity.y = min(velocity.y + gravity * delta, JUMP_VELOCITY)
+			velocity.y = min(velocity.y + gravity * delta, MAX_FALLING_VELOCITY)
 		JumpState.JUMPING:
 			velocity.y = JUMP_VELOCITY
 			#or if you want to smooth/ease jump over time
