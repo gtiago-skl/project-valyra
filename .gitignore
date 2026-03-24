@@ -1,3 +1,19 @@
 # Godot 4+ specific ignores
+.export/
+.import/
+*.import
+*.godot*~ #backup files
+*.tmp
+*.log
+
+#OS specific (optional but recommended)
+.DS_Store
+Thumbs.db
+
+#Optional: build artifacts if you export the game
+bin/
+build/
+
+
 .godot/
 /android/
