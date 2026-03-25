@@ -6,14 +6,33 @@ const MAX_FALLING_VELOCITY = 800.0
 
 #States would help for more advanced mechanics such as double jump, etc
 enum JumpState {READY, JUMPING, FALLING}
+enum MovementState {IDLE, RUNNING}
+var current_movement_state: MovementState = MovementState.IDLE
 var current_jump_state: JumpState = JumpState.READY
 var elapsed_jump_time: float = 0.0 #Can use a timer and timeout signal instead
 
 @export var jump_duration: float = 0.25
+@onready var anim = $AnimatedSprite2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _handle_player_state(direction):
+	if direction:
+		velocity.x = direction * SPEED
+		current_movement_state = MovementState.RUNNING
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		current_movement_state = MovementState.IDLE
+	
+	
 
+func _handle_animations():
+	if current_movement_state == MovementState.IDLE:
+		anim.play("idle")
+	elif current_movement_state == MovementState.RUNNING:
+		anim.play("run")
+	
+	
 func _handle_jumping_state(delta):
 	#if you're jumping, keep counting until you can no longer jump
 	if current_jump_state == JumpState.JUMPING:
@@ -52,11 +71,10 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	var direction := Input.get_axis("move_left", "move_right")
+	_handle_player_state(direction)
+	
+	_handle_player_state(direction)
+	_handle_animations()
 
 	move_and_slide()
