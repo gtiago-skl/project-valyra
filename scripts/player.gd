@@ -15,7 +15,7 @@ var elapsed_jump_time: float = 0.0 #Can use a timer and timeout signal instead
 @onready var anim = $AnimatedSprite2D
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+# Get the input direction and handle the movement/deceleration.
 
 
 
@@ -28,11 +28,16 @@ func _handle_player_state(direction):
 		current_movement_state = MovementState.IDLE
 
 
-func _handle_animations():
+func _handle_animations(direction):
 	if current_movement_state == MovementState.IDLE:
 		anim.play("idle")
 	elif current_movement_state == MovementState.RUNNING:
 		anim.play("run")
+	
+	#Flip horizontally when moving left
+	if direction != 0:
+		anim.flip_h = direction < 0
+		
 
 
 func _handle_jumping_state(delta):
@@ -72,11 +77,10 @@ func _physics_process(delta: float) -> void:
 		JumpState.JUMPING:
 			velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 	
 	_handle_player_state(direction)
 	
-	_handle_animations()
+	_handle_animations(direction)
 
 	move_and_slide()
