@@ -160,13 +160,12 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" unique_id=364319001]
 script = ExtResource("1_g2els")
-jump_duration = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910062029]
 sprite_frames = SubResource("SpriteFrames_d2wvv")
 animation = &"run"
 autoplay = "idle"
-frame_progress = 0.2199683
+frame_progress = 0.88644034
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1006907502]
 position = Vector2(0, 6)

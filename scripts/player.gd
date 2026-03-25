@@ -16,6 +16,9 @@ var elapsed_jump_time: float = 0.0 #Can use a timer and timeout signal instead
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+
+
 func _handle_player_state(direction):
 	if direction:
 		velocity.x = direction * SPEED
@@ -23,16 +26,15 @@ func _handle_player_state(direction):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		current_movement_state = MovementState.IDLE
-	
-	
+
 
 func _handle_animations():
 	if current_movement_state == MovementState.IDLE:
 		anim.play("idle")
 	elif current_movement_state == MovementState.RUNNING:
 		anim.play("run")
-	
-	
+
+
 func _handle_jumping_state(delta):
 	#if you're jumping, keep counting until you can no longer jump
 	if current_jump_state == JumpState.JUMPING:
@@ -40,7 +42,7 @@ func _handle_jumping_state(delta):
 		# Fall if jumping for too long
 		if elapsed_jump_time >= jump_duration:
 			current_jump_state = JumpState.FALLING
-	
+
 	#Input
 	if Input.is_action_just_pressed("jump"):
 		print("Pressed 'jump'!")
@@ -56,10 +58,10 @@ func _handle_jumping_state(delta):
 	if current_jump_state == JumpState.FALLING and is_on_floor():
 		current_jump_state = JumpState.READY
 		elapsed_jump_time = 0.0
-	
+
+
 
 func _physics_process(delta: float) -> void:
-		
 	# Handle jump.
 	_handle_jumping_state(delta) # First
 	
@@ -72,9 +74,9 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
-	_handle_player_state(direction)
 	
 	_handle_player_state(direction)
+	
 	_handle_animations()
 
 	move_and_slide()
