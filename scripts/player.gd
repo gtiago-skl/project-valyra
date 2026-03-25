@@ -29,15 +29,19 @@ func _handle_player_state(direction):
 
 
 func _handle_animations(direction):
-	if current_movement_state == MovementState.IDLE:
+	if current_jump_state == JumpState.JUMPING:
+		anim.play("jump_start")
+	elif current_jump_state == JumpState.FALLING:
+		anim.play("falling_start")
+	elif current_movement_state == MovementState.IDLE:
 		anim.play("idle")
 	elif current_movement_state == MovementState.RUNNING:
 		anim.play("run")
 	
 	#Flip horizontally when moving left
-	if direction != 0:
+	if direction != 0 and is_on_floor():
 		anim.flip_h = direction < 0
-		
+	
 
 
 func _handle_jumping_state(delta):
