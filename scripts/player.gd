@@ -17,7 +17,17 @@ var elapsed_jump_time: float = 0.0 #Can use a timer and timeout signal instead
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 # Get the input direction and handle the movement/deceleration.
 
+var queued_animation: String = ""
 
+func _on_anim_finished():
+	if queued_animation != "":
+		anim.play(queued_animation)
+		queued_animation = ""
+
+
+
+func _ready():
+	anim.connect("animation_finished", Callable(self, "_on_anim_finished"))
 
 func _handle_player_state(direction):
 	if direction:
@@ -32,7 +42,10 @@ func _handle_animations(direction):
 	if current_jump_state == JumpState.JUMPING:
 		anim.play("jump_start")
 	elif current_jump_state == JumpState.FALLING:
-		anim.play("falling_start")
+		#only trigger start if not already playing
+		if anim.animation != "falling_start" and anim.animation != "falling":
+			anim.play("falling_start")
+			queued_animation = "falling" #automatically plays when start finishes
 	elif current_movement_state == MovementState.IDLE:
 		anim.play("idle")
 	elif current_movement_state == MovementState.RUNNING:

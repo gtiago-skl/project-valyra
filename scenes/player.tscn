@@ -3,6 +3,18 @@
 [ext_resource type="Texture2D" uid="uid://dqjwwqu76vc1u" path="res://assets/hero/male_hero.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dypg14r6oneyi" path="res://scripts/player.gd" id="1_g2els"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 1536, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(128, 1536, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(256, 1536, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(0, 1408, 128, 128)
@@ -127,6 +139,20 @@ region = Rect2(1152, 768, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ah")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_31cv2")
 }, {
 "duration": 1.0,
@@ -243,9 +269,10 @@ script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910062029]
 sprite_frames = SubResource("SpriteFrames_d2wvv")
-animation = &"falling_start"
+animation = &"falling"
 autoplay = "idle"
-frame_progress = 0.334999
+frame = 2
+frame_progress = 0.21817216
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1006907502]
 position = Vector2(0, 6)
